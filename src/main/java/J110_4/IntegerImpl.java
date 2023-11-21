@@ -40,9 +40,11 @@ public class IntegerImpl implements BinaryOperation{
     public int trueCount() {
         int count = 0;
         for (int i = 0; i < SIZE; i++) {
-            if (checkToIndex(i)) {
-                count++;
+            int mask = 1 << i;
+            if ((array[i/32]&mask) !=mask) {
+                continue;
             }
+            count++;
         }
         return count;
     }
